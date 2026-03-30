@@ -1,9 +1,14 @@
+import { Header } from "@/components/header";
+
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <h1 className="text-4xl text-gray-800 dark:text-gray-200">
-        Hello World!
-      </h1>
-    </div>
+    <>
+      <div id="home">
+        <Header />
+        <h1 className="text-4xl text-gray-800 dark:text-gray-200">
+          Hello World!
+        </h1>
+      </div>
+    </>
   );
 }
