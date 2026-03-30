@@ -6,6 +6,7 @@ import { Button } from "@heroui/react";
 import Link from "next/link";
 import { Ripple } from "m3-ripple";
 import "m3-ripple/ripple.css";
+import { ThemeSwitcher } from "./theme-switcher";
 
 export const Header = () => {
   return (
@@ -42,6 +43,7 @@ export const Header = () => {
                   Get in touch
                 </Button>
               </Link>
+              <ThemeSwitcher />
             </div>
           </ul>
         </div>
