@@ -2,8 +2,12 @@
 @import "@heroui/styles";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000;
+  --foreground: #fff;
+  --scrollbar-track: var(--color-zinc-300);
+  --scrollbar-thumb: var(--color-zinc-500);
+  --scrollbar-thumb-hover: var(--color-zinc-600);
+  --scrollbar-thumb-active: var(--color-zinc-700);
 }
 
 @theme inline {
@@ -12,17 +16,65 @@
   --font-sans: var(--font-outfit-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark,
+[data-theme="dark"] {
+  --background: #000;
+  --foreground: #fff;
+  --scrollbar-track: var(--color-zinc-900);
+  --scrollbar-thumb: var(--color-zinc-600);
+  --scrollbar-thumb-hover: var(--color-zinc-500);
+  --scrollbar-thumb-active: var(--color-zinc-400);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Outfit, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  cursor:
+    image-set(url(/cursor/default.png) 1x, url(/cursor/default@2x.png) 2x) 8 8,
+    default;
+}
+
+/* Scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+  transition: all 0.3s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--scrollbar-thumb-active);
+}
+
+/* Text select background */
+*::-moz-selection {
+  background-color: var(--color-accent);
+  color: var(--color-accent-foreground);
+}
+*::selection {
+  background-color: var(--color-accent);
+  color: var(--color-accent-foreground);
 }
 
 /*
@@ -34,9 +86,7 @@ body {
 
 :root,
 .light,
-.default,
-[data-theme="light"],
-[data-theme="default"] {
+[data-theme="light"] {
   /* Theme Colors (Light Mode) */
   --accent: oklch(62.04% 0.195 253.83);
   --accent-foreground: oklch(99.11% 0 0);
@@ -79,7 +129,9 @@ body {
 }
 
 .dark,
-[data-theme="dark"] {
+.default,
+[data-theme="dark"],
+[data-theme="default"] {
   color-scheme: dark;
   /* Theme Colors (Dark Mode) */
   --accent: oklch(62.04% 0.195 253.83);
