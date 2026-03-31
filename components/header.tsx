@@ -2,8 +2,7 @@
 
 import { siteConfig } from "@/config/site";
 import Image from "next/image";
-import { Button } from "@heroui/react";
-import Link from "next/link";
+import { Button, Link } from "@heroui/react";
 import { Ripple } from "m3-ripple";
 import "m3-ripple/ripple.css";
 import { ThemeSwitcher } from "./theme-switcher";
@@ -13,11 +12,11 @@ export const Header = () => {
     <header
       className="
       fixed z-50 flex w-screen flex-row items-center justify-center 
-      bg-white bg-opacity-80 px-8 py-2 backdrop-blur-md 
-      dark:bg-black dark:bg-opacity-80 md:py-3"
+      bg-white/80 px-8 py-2 backdrop-blur-md 
+      dark:bg-black/80 dark:bg-opacity-80 md:py-3"
     >
       <div className="flex w-full max-w-5xl justify-between">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2 no-underline">
           <Image src="/icons/logo.svg" width={32} height={32} alt="logo" />
           <p className="font-bold text-inherit">Ronald Lopes</p>
         </Link>
@@ -26,23 +25,25 @@ export const Header = () => {
           <ul className="hidden items-center justify-between sm:flex">
             <div className="flex items-center gap-1">
               {siteConfig.navItems.map((item, index) => (
-                <Link key={index} href={item.href}>
-                  <Button size="sm" variant="ghost">
-                    <Ripple />
-                    {item.label}
-                  </Button>
-                </Link>
-              ))}
-              <Link href="#get-in-touch">
                 <Button
                   size="sm"
-                  className="bg-accent-soft"
-                  variant="secondary"
+                  key={index}
+                  variant="ghost"
+                  onPress={() => (window.location.href = item.href)}
                 >
                   <Ripple />
-                  Get in touch
+                  {item.label}
                 </Button>
-              </Link>
+              ))}
+              <Button
+                size="sm"
+                onPress={() => (window.location.hash = "get-in-touch")}
+                className="bg-accent-soft"
+                variant="secondary"
+              >
+                <Ripple />
+                Get in touch
+              </Button>
               <ThemeSwitcher />
             </div>
           </ul>

@@ -1,4 +1,6 @@
-import { Button, Link } from "@heroui/react";
+"use client";
+
+import { Button } from "@heroui/react";
 
 export function Hero() {
   return (
@@ -14,15 +16,14 @@ export function Hero() {
         crafting experiences
         that resonate with users`}
       </h2>
-      <Link href="#work" className="no-underline! my-8">
-        <Button
-          className="px-6 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
-          variant="primary"
-          size="lg"
-        >
-          Check out my work
-        </Button>
-      </Link>
+      <Button
+        className="mt-8 px-6"
+        variant="primary"
+        size="lg"
+        onPress={() => (window.location.hash = "#work")}
+      >
+        Check out my work
+      </Button>
     </section>
   );
 }
