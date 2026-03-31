@@ -22,28 +22,30 @@ export const Header = () => {
         </Link>
 
         <div className="flex">
-          <ul className="hidden items-center justify-between sm:flex">
+          <ul className="items-center justify-between">
             <div className="flex items-center gap-1">
-              {siteConfig.navItems.map((item, index) => (
+              <div className="hidden sm:flex">
+                {siteConfig.navItems.map((item, index) => (
+                  <Button
+                    size="sm"
+                    key={index}
+                    variant="ghost"
+                    onPress={() => (window.location.href = item.href)}
+                  >
+                    <Ripple />
+                    {item.label}
+                  </Button>
+                ))}
                 <Button
                   size="sm"
-                  key={index}
-                  variant="ghost"
-                  onPress={() => (window.location.href = item.href)}
+                  onPress={() => (window.location.hash = "get-in-touch")}
+                  className="bg-accent-soft"
+                  variant="secondary"
                 >
                   <Ripple />
-                  {item.label}
+                  Get in touch
                 </Button>
-              ))}
-              <Button
-                size="sm"
-                onPress={() => (window.location.hash = "get-in-touch")}
-                className="bg-accent-soft"
-                variant="secondary"
-              >
-                <Ripple />
-                Get in touch
-              </Button>
+              </div>
               <ThemeSwitcher />
             </div>
           </ul>
