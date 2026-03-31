@@ -20,7 +20,7 @@ export function Hero() {
         className="mt-8 px-6"
         variant="primary"
         size="lg"
-        onPress={() => (window.location.hash = "#work")}
+        onPress={() => (window.location.href = "#work")}
       >
         Check out my work
       </Button>
