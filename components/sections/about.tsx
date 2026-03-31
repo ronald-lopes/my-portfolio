@@ -4,13 +4,13 @@ export const About = () => {
   return (
     <section
       id="about"
-      className="h-[calc(95vh-56px)] 2xl:max-h-212.5 2xl:min-h-125 lg:max-h-175 lg:min-h-125 
+      className="h-[calc(95vh-56px)] 2xl:min-h-125 lg:min-h-125 
     my-14 px-4 flex flex-col items-center justify-center"
     >
       <Title title="About me" subtitle="Exploring My Background" />
 
       <div className="my-8 flex w-full max-w-4xl flex-col-reverse items-center justify-between md:flex-row">
-        <div className="flex w-[80%] flex-col items-start justify-center gap-4 md:w-90">
+        <div className="flex w-[90%] flex-col sm:items-start justify-center gap-4 md:w-90">
           <p className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
             It&apos;s Ronald Lopes 👋
           </p>
