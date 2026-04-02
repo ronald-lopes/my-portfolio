@@ -1,5 +1,6 @@
 import { Link } from "@heroui/react";
 import { buttonVariants } from "@heroui/styles";
+import { ArrowRightIcon } from "@phosphor-icons/react";
 import Image from "next/image";
 
 interface ProjectProps {
@@ -39,16 +40,23 @@ export function Project(
           <h3 className="text-2xl font-semibold text-foreground">
             {props.title}
           </h3>
-          <p className="text-base text-muted-foreground">{props.description}</p>
+          <p className="text-base text-muted-foreground mt-2 mb-4">
+            {props.description}
+          </p>
         </div>
         <Link
           className={
             buttonVariants({ variant: "secondary", size: "md" }) +
-            " mt-4 bg-accent-soft"
+            " mt-4 bg-accent-soft border-2 border-transparent hover:border-2 hover:border-accent ease-in-out transition-all duration-500 group"
           }
           href={props.href}
         >
           View Project
+          <ArrowRightIcon
+            size={24}
+            weight="bold"
+            className="ml-2 group-hover:translate-x-1 ease-in-out transition-all group-hover:ease-in-out group-hover:duration-600"
+          />
         </Link>
       </div>
     </div>

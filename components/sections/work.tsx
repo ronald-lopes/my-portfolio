@@ -4,7 +4,7 @@ import { Title } from "@/components/section-title";
 import { projects } from "@/config/projects";
 import { Link } from "@heroui/react";
 import { buttonVariants } from "@heroui/styles";
-import { Project } from "../project-card";
+import { Project } from "../project";
 import { ArrowUpRightIcon } from "@phosphor-icons/react";
 
 export const Work = () => {
