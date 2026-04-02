@@ -1,4 +1,5 @@
-import { Button } from "@heroui/react";
+import { Link } from "@heroui/react";
+import { buttonVariants } from "@heroui/styles";
 import Image from "next/image";
 
 interface ProjectProps {
@@ -40,14 +41,15 @@ export function Project(
           </h3>
           <p className="text-base text-muted-foreground">{props.description}</p>
         </div>
-        <Button
-          variant="secondary"
-          onPress={() => (window.location.href = props.href)}
-          size="md"
-          className="mt-4 bg-accent-soft"
+        <Link
+          className={
+            buttonVariants({ variant: "secondary", size: "md" }) +
+            " mt-4 bg-accent-soft"
+          }
+          href={props.href}
         >
           View Project
-        </Button>
+        </Link>
       </div>
     </div>
   );

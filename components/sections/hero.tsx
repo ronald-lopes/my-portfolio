@@ -1,11 +1,12 @@
 "use client";
 
-import { Button } from "@heroui/react";
+import { Link } from "@heroui/react";
+import { buttonVariants } from "@heroui/styles";
 
 export function Hero() {
   return (
     <section
-      className="h-[calc(95vh-56px)] 2xl:max-h-[850px] 2xl:min-h-[500px] lg:max-h-[700px] lg:min-h-[500px] 
+      className="h-[calc(95vh-56px)] 2xl:max-h-212.5 2xl:min-h-125 lg:max-h-175 lg:min-h-125 
     mt-14 px-4 flex flex-col items-center justify-center"
     >
       <span className="text-md text-center font-light text-gray-700 dark:text-gray-300 sm:text-lg">
@@ -16,14 +17,15 @@ export function Hero() {
         crafting experiences
         that resonate with users`}
       </h2>
-      <Button
-        className="mt-8 px-6"
-        variant="primary"
-        size="lg"
-        onPress={() => (window.location.href = "#work")}
+      <Link
+        className={
+          buttonVariants({ variant: "primary", size: "lg" }) + " mt-8 px-6"
+        }
+        href="#work"
+        aria-label="View works"
       >
         Check out my work
-      </Button>
+      </Link>
     </section>
   );
 }

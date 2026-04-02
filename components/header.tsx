@@ -2,8 +2,8 @@
 
 import { siteConfig } from "@/config/site";
 import Image from "next/image";
-import { Button, Link } from "@heroui/react";
-import { Ripple } from "m3-ripple";
+import { Link } from "@heroui/react";
+import { buttonVariants } from "@heroui/styles";
 import "m3-ripple/ripple.css";
 import { ThemeSwitcher } from "./theme-switcher";
 
@@ -15,7 +15,7 @@ export const Header = () => {
       bg-white/80 px-8 py-2 backdrop-blur-md 
       dark:bg-black/80 dark:bg-opacity-80 md:py-3"
     >
-      <div className="flex w-full max-w-5xl justify-between">
+      <div className="flex w-full max-w-5xl justify-between items-center">
         <Link href="/" className="flex items-center gap-2 no-underline">
           <Image src="/icons/logo.svg" width={32} height={32} alt="logo" />
           <p className="font-bold text-inherit">Ronald Lopes</p>
@@ -26,25 +26,25 @@ export const Header = () => {
             <div className="flex items-center gap-1">
               <div className="hidden sm:flex">
                 {siteConfig.navItems.map((item, index) => (
-                  <Button
-                    size="sm"
+                  <Link
+                    className={buttonVariants({ variant: "ghost" })}
+                    href={item.href}
+                    rel="noopener noreferrer"
                     key={index}
-                    variant="ghost"
-                    onPress={() => (window.location.href = item.href)}
+                    aria-label={item.label}
                   >
-                    <Ripple />
                     {item.label}
-                  </Button>
+                  </Link>
                 ))}
-                <Button
-                  size="sm"
-                  onPress={() => (window.location.hash = "get-in-touch")}
-                  className="bg-accent-soft"
-                  variant="secondary"
+                <Link
+                  className={
+                    buttonVariants({ variant: "secondary" }) + " bg-accent-soft"
+                  }
+                  href="#get-in-touch"
+                  aria-label="Get in touch"
                 >
-                  <Ripple />
                   Get in touch
-                </Button>
+                </Link>
               </div>
               <ThemeSwitcher />
             </div>

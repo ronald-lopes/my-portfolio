@@ -2,9 +2,10 @@
 
 import { Title } from "@/components/section-title";
 import { projects } from "@/config/projects";
-import { Button } from "@heroui/react";
+import { Link } from "@heroui/react";
+import { buttonVariants } from "@heroui/styles";
 import { Project } from "../project-card";
-import { ArrowUpRight } from "@phosphor-icons/react";
+import { ArrowUpRightIcon } from "@phosphor-icons/react";
 
 export const Work = () => {
   return (
@@ -12,7 +13,7 @@ export const Work = () => {
       id="work"
       className="my-14 px-4 flex flex-col items-center align-top justify-start"
     >
-      <Title title="Work" subtitle="My Projects and Experience" />
+      <Title title="My Projects and Experience" subtitle="Work" />
       <div className="flex w-full flex-col sm:flex-wrap sm:flex-row max-w-5xl justify-between">
         {projects.map((item, index) => (
           <Project
@@ -36,10 +37,17 @@ export const Work = () => {
           </Project>
         ))}
       </div>
-      <Button variant="primary" size="md" className="my-8 py-4 px-6">
-        <ArrowUpRight size={16} weight="bold" className="mt-1" />
+      <Link
+        className={
+          buttonVariants({ variant: "primary", size: "md" }) +
+          " my-8 py-4 px-6 gap-2"
+        }
+        href="/projects"
+        aria-label="View projects"
+      >
+        <ArrowUpRightIcon size={16} weight="bold" className="mt-1" />
         See more
-      </Button>
+      </Link>
     </section>
   );
 };
