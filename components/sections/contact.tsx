@@ -19,42 +19,42 @@ export const Contact = () => {
     >
       <Title title="Get in touch" subtitle="What’s Next?" />
       <ContactForm />
-      <div className="mt-8 flex flex-row gap-4">
+      <div className="mt-8 flex flex-row gap-4 justify-center">
         <Link
           className={
-            buttonVariants({ variant: "ghost", size: "md" }) + " aspect-square"
+            buttonVariants({ variant: "ghost", size: "lg" }) + " aspect-square"
           }
           aria-label="Email"
           href="mailto:me@ronaldlopes.design"
         >
-          <EnvelopeSimpleIcon weight="bold" size={24} />
+          <EnvelopeSimpleIcon weight="bold" size={24} className="w-5 h-auto" />
         </Link>
         <Link
           className={
-            buttonVariants({ variant: "ghost", size: "md" }) + " aspect-square"
+            buttonVariants({ variant: "ghost", size: "lg" }) + " aspect-square"
           }
           aria-label="LinkedIn"
           href="https://www.linkedin.com/in/ronald-lopes/"
         >
-          <LinkedinLogoIcon weight="bold" size={24} />
+          <LinkedinLogoIcon weight="bold" size={24} className="w-5 h-auto" />
         </Link>
         <Link
           className={
-            buttonVariants({ variant: "ghost", size: "md" }) + " aspect-square"
+            buttonVariants({ variant: "ghost", size: "lg" }) + " aspect-square"
           }
           aria-label="Dribbble"
           href="https://dribbble.com/ronaldlopes"
         >
-          <DribbbleLogoIcon weight="bold" size={24} />
+          <DribbbleLogoIcon weight="bold" size={24} className="w-5 h-auto" />
         </Link>
         <Link
           className={
-            buttonVariants({ variant: "ghost", size: "md" }) + " aspect-square"
+            buttonVariants({ variant: "ghost", size: "lg" }) + " aspect-square"
           }
           aria-label="GitHub"
           href="https://github.com/ronald-lopes"
         >
-          <GithubLogoIcon weight="bold" size={24} />
+          <GithubLogoIcon weight="bold" size={24} className="w-5 h-auto" />
         </Link>
       </div>
     </section>
