@@ -38,7 +38,8 @@ export const Header = () => {
                 ))}
                 <Link
                   className={
-                    buttonVariants({ variant: "secondary" }) + " bg-accent-soft"
+                    buttonVariants({ variant: "secondary" }) +
+                    " border-2 border-transparent bg-accent-soft hover:border-2 hover:border-accent box-border ease-in-out transition-all duration-500"
                   }
                   href="#get-in-touch"
                   aria-label="Get in touch"
