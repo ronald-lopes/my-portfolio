@@ -13,8 +13,7 @@ export const Header = () => {
     <header
       className="
       fixed z-50 flex w-screen flex-row items-center justify-center 
-      bg-white/80 px-8 py-2 backdrop-blur-md 
-      dark:bg-black/80 dark:bg-opacity-80 md:py-3"
+      bg-background/80 px-8 py-2 backdrop-blur-md md:py-3"
     >
       <div className="flex w-full max-w-5xl justify-between items-center">
         <Link href="/" className="flex items-center gap-2 no-underline">
