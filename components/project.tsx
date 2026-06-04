@@ -2,6 +2,8 @@ import { Link } from "@heroui/react";
 import { buttonVariants } from "@heroui/styles";
 import { ArrowRightIcon } from "@phosphor-icons/react";
 import Image from "next/image";
+import { Ripple } from "m3-ripple";
+import "m3-ripple/ripple.css";
 
 interface ProjectProps {
   title: string;
@@ -14,10 +16,7 @@ interface ProjectProps {
   isLoading?: boolean;
 }
 
-export function Project(
-  props: ProjectProps,
-  // children: React.ReactNode,
-) {
+export function Project(props: ProjectProps) {
   return (
     <div className="flex flex-col sm:max-w-[48%] justify-between items-start my-6">
       <div className="w-full">
@@ -57,6 +56,7 @@ export function Project(
             weight="bold"
             className="ml-2 group-hover:translate-x-1 ease-in-out transition-all group-hover:ease-in-out group-hover:duration-600"
           />
+          <Ripple />
         </Link>
       </div>
     </div>

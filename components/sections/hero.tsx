@@ -2,6 +2,8 @@
 
 import { Link } from "@heroui/react";
 import { buttonVariants } from "@heroui/styles";
+import { Ripple } from "m3-ripple";
+import "m3-ripple/ripple.css";
 
 export function Hero() {
   return (
@@ -25,6 +27,7 @@ export function Hero() {
         aria-label="View works"
       >
         Check out my work
+        <Ripple />
       </Link>
     </section>
   );

@@ -4,6 +4,7 @@ import { siteConfig } from "@/config/site";
 import Image from "next/image";
 import { Link } from "@heroui/react";
 import { buttonVariants } from "@heroui/styles";
+import { Ripple } from "m3-ripple";
 import "m3-ripple/ripple.css";
 import { ThemeSwitcher } from "./theme-switcher";
 
@@ -34,6 +35,7 @@ export const Header = () => {
                     aria-label={item.label}
                   >
                     {item.label}
+                    <Ripple />
                   </Link>
                 ))}
                 <Link
@@ -45,6 +47,7 @@ export const Header = () => {
                   aria-label="Get in touch"
                 >
                   Get in touch
+                  <Ripple />
                 </Link>
               </div>
               <ThemeSwitcher />

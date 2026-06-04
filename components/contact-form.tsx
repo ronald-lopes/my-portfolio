@@ -2,7 +2,6 @@
 
 import {
   TextField,
-  Link,
   Button,
   TextArea,
   Label,
@@ -10,10 +9,11 @@ import {
   Surface,
   FieldError,
 } from "@heroui/react";
-import { buttonVariants } from "@heroui/styles";
 import { RocketLaunchIcon } from "@phosphor-icons/react";
 import axios from "axios";
 import React from "react";
+import { Ripple } from "m3-ripple";
+import "m3-ripple/ripple.css";
 
 export const ContactForm = () => {
   const [submitted, setSubmitted] = React.useState(false);
@@ -135,14 +135,13 @@ export const ContactForm = () => {
                   weight="fill"
                   className="hover:animate-rocket"
                 />
+                <Ripple />
               </Button>
             )}
             {submitted && (
-              <Link
-                className={
-                  buttonVariants({ variant: "ghost" }) +
-                  " mt-6 w-full bg-emerald-600 text-white duration-1000 ease-in-out hover:bg-emerald-500 lg:max-w-full"
-                }
+              <Button
+                variant="ghost"
+                className="mt-6 w-full bg-emerald-600 text-white duration-1000 ease-in-out hover:bg-emerald-500 lg:max-w-full"
                 onPress={() => setSubmitted(false)}
               >
                 Thank you for your message!
@@ -151,7 +150,8 @@ export const ContactForm = () => {
                   weight="fill"
                   className="animate-rocket ml-1"
                 />
-              </Link>
+                <Ripple />
+              </Button>
             )}
           </fieldset>
         </form>

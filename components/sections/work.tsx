@@ -5,6 +5,8 @@ import { projects } from "@/config/projects";
 import { Link } from "@heroui/react";
 import { buttonVariants } from "@heroui/styles";
 import { Project } from "../project";
+import { Ripple } from "m3-ripple";
+import "m3-ripple/ripple.css";
 import { ArrowUpRightIcon } from "@phosphor-icons/react";
 
 export const Work = () => {
@@ -23,7 +25,6 @@ export const Work = () => {
             href={item.href}
             description={item.description}
             image={item.image}
-            // isLoading={item.isLoading}
           >
             {/* Add Custom elements to the card
             
@@ -47,6 +48,7 @@ export const Work = () => {
       >
         <ArrowUpRightIcon size={16} weight="bold" className="mt-1" />
         See more
+        <Ripple />
       </Link>
     </section>
   );

@@ -10,6 +10,8 @@ import {
 } from "@phosphor-icons/react";
 import { Link } from "@heroui/react";
 import { buttonVariants } from "@heroui/styles";
+import { Ripple } from "m3-ripple";
+import "m3-ripple/ripple.css";
 
 export const Contact = () => {
   return (
@@ -28,6 +30,7 @@ export const Contact = () => {
           href="mailto:me@ronaldlopes.design"
         >
           <EnvelopeSimpleIcon weight="bold" size={24} className="w-5 h-auto" />
+          <Ripple />
         </Link>
         <Link
           className={
@@ -37,6 +40,7 @@ export const Contact = () => {
           href="https://www.linkedin.com/in/ronald-lopes/"
         >
           <LinkedinLogoIcon weight="bold" size={24} className="w-5 h-auto" />
+          <Ripple />
         </Link>
         <Link
           className={
@@ -46,6 +50,7 @@ export const Contact = () => {
           href="https://dribbble.com/ronaldlopes"
         >
           <DribbbleLogoIcon weight="bold" size={24} className="w-5 h-auto" />
+          <Ripple />
         </Link>
         <Link
           className={
@@ -55,6 +60,7 @@ export const Contact = () => {
           href="https://github.com/ronald-lopes"
         >
           <GithubLogoIcon weight="bold" size={24} className="w-5 h-auto" />
+          <Ripple />
         </Link>
       </div>
     </section>
