@@ -8,6 +8,7 @@ import {
   Label,
   Input,
   Surface,
+  FieldError,
 } from "@heroui/react";
 import { buttonVariants } from "@heroui/styles";
 import { RocketLaunchIcon } from "@phosphor-icons/react";
@@ -16,26 +17,30 @@ import React from "react";
 
 export const ContactForm = () => {
   const [submitted, setSubmitted] = React.useState(false);
-  const [formValue, setformValue] = React.useState({
+  const [inputs, setInputs] = React.useState({
     name: "",
     email: "",
     message: "",
   });
 
-  const handleSubmit = async (event: React.SyntheticEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleOnChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { id, value } = event.target;
+    setInputs((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
 
-    const formData = new FormData();
-    formData.append("name", formValue.name);
-    formData.append("email", formValue.email);
-    formData.append("message", formValue.message);
+  const handleOnSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
     try {
       const response = await axios({
-        method: "post",
+        method: "POST",
         url: process.env.NEXT_PUBLIC_FORM_URL,
-        data: formData,
-        headers: { "Content-Type": "multipart/form-data" },
+        data: inputs,
       });
 
       if (response.status === 200) {
@@ -45,13 +50,6 @@ export const ContactForm = () => {
       alert("Something went wrong, please try again later");
       console.log(error);
     }
-  };
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setformValue({
-      ...formValue,
-      [event.target.name]: event.target.value,
-    });
   };
 
   return (
@@ -66,7 +64,7 @@ export const ContactForm = () => {
           can.
         </p>
         <form
-          onSubmit={handleSubmit}
+          onSubmit={handleOnSubmit}
           className="flex flex-col items-center justify-center w-full"
         >
           <fieldset className="flex w-full flex-col gap-4 min-w-0">
@@ -76,10 +74,16 @@ export const ContactForm = () => {
                 name="name"
                 className="w-full min-w-0"
                 isRequired
-                onChange={() => handleChange}
               >
                 <Label>Name</Label>
-                <Input placeholder="Your name" />
+                <Input
+                  id="name"
+                  name="name"
+                  placeholder="Your name"
+                  value={inputs.name}
+                  onChange={handleOnChange}
+                />
+                <FieldError>Please enter your name</FieldError>
               </TextField>
               <TextField
                 variant="secondary"
@@ -87,26 +91,32 @@ export const ContactForm = () => {
                 type="email"
                 className="w-full min-w-0"
                 isRequired
-                onChange={() => handleChange}
               >
                 <Label>Email</Label>
-                <Input placeholder="Your email" />
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="Your email"
+                  value={inputs.email}
+                  onChange={handleOnChange}
+                />
+                <FieldError>Please enter a valid email address</FieldError>
               </TextField>
             </div>
             <div>
-              <TextField
-                isRequired
-                variant="secondary"
-                name="message"
-                onChange={() => handleChange}
-              >
+              <TextField isRequired variant="secondary" name="message">
                 <Label>Your message</Label>
                 <TextArea
+                  id="message"
                   name="message"
                   placeholder="Write your message here..."
                   className="w-full"
                   rows={3}
+                  value={inputs.message}
+                  onChange={handleOnChange}
                 ></TextArea>
+                <FieldError>Please enter your message</FieldError>
               </TextField>
             </div>
             {!submitted && (
@@ -117,7 +127,7 @@ export const ContactForm = () => {
                 size="md"
               >
                 Get in touch
-                <RocketLaunchIcon size={24} />
+                <RocketLaunchIcon size={24} weight="fill" />
               </Button>
             )}
             {submitted && (
@@ -129,7 +139,11 @@ export const ContactForm = () => {
                 onPress={() => setSubmitted(false)}
               >
                 Thank you for your message!
-                <RocketLaunchIcon size={24} className="animate-rocket" />
+                <RocketLaunchIcon
+                  size={24}
+                  weight="fill"
+                  className="animate-rocket ml-1"
+                />
               </Link>
             )}
           </fieldset>
