@@ -21,7 +21,7 @@ export const Title = (props: TitleProps) => {
       </span>
       <h2
         className="
-        text-2xl sm:text-4xl font-bold text-foreground"
+        text-2xl sm:text-4xl font-bold text-foreground text-center"
       >
         {props.title}
       </h2>
