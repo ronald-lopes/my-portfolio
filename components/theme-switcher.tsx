@@ -1,49 +1,58 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 "use client";
-import { useEffect, useState } from "react";
-import { Button } from "@heroui/react";
+import { useLayoutEffect, useState } from "react";
+import { buttonVariants } from "@heroui/styles";
+
+const isValidTheme = (theme: string | null): theme is "light" | "dark" =>
+  theme === "light" || theme === "dark";
+
+const applyTheme = (theme: "light" | "dark") => {
+  document.documentElement.classList.toggle("dark", theme === "dark");
+  document.documentElement.dataset.theme = theme;
+};
 
 export const ThemeSwitcher = () => {
-  const [checked, setChecked] = useState(true);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const storedTheme = window.localStorage.getItem("theme");
     const prefersDark = window.matchMedia(
       "(prefers-color-scheme: dark)",
     ).matches;
-    const initialTheme =
-      storedTheme === "light" || storedTheme === "dark"
-        ? storedTheme
-        : prefersDark
-          ? "dark"
-          : "light";
+    const initialTheme = isValidTheme(storedTheme)
+      ? storedTheme
+      : prefersDark
+        ? "dark"
+        : "light";
 
-    document.documentElement.classList.toggle("dark", initialTheme === "dark");
-    setChecked(initialTheme === "light");
+    applyTheme(initialTheme);
+    setTheme(initialTheme);
   }, []);
 
   const handleToggle = () => {
-    const nextTheme = checked ? "dark" : "light";
+    const nextTheme = theme === "light" ? "dark" : "light";
 
-    document.documentElement.classList.toggle("dark", nextTheme === "dark");
+    applyTheme(nextTheme);
     window.localStorage.setItem("theme", nextTheme);
-    setChecked((prev) => !prev);
+    setTheme(nextTheme);
   };
 
   return (
-    <Button
+    <button
       type="button"
-      variant="ghost"
-      onClick={handleToggle}
       className={
-        "relative flex items-center justify-center transition-all aspect-square"
+        buttonVariants({ variant: "ghost" }) +
+        " relative flex items-center justify-center transition-all h-10 w-10"
       }
-      aria-pressed={!checked}
-      aria-label={checked ? "Switch to dark theme" : "Switch to light theme"}
+      onClick={handleToggle}
+      aria-label={
+        theme === "light" ? "Switch to dark theme" : "Switch to light theme"
+      }
+      aria-pressed={theme === "dark"}
     >
       {/* Sun */}
       <svg
-        className={`absolute w-5 h-5 ${checked ? "block" : "hidden"}`}
+        className={`absolute w-5 h-5 ${theme === "light" ? "block" : "hidden"}`}
         fill="none"
         stroke="currentColor"
         strokeWidth="2"
@@ -64,11 +73,11 @@ export const ThemeSwitcher = () => {
 
       {/* Moon */}
       <svg
-        className={`absolute w-5 h-5 fill-accent-foreground ${checked ? "hidden" : "block"}`}
+        className={`absolute w-5 h-5 fill-accent-foreground ${theme === "light" ? "hidden" : "block"}`}
         viewBox="0 0 24 24"
       >
         <path d="m12.3 4.9c.4-.2.6-.7.5-1.1s-.6-.8-1.1-.8c-4.9.1-8.7 4.1-8.7 9 0 5 4 9 9 9 3.8 0 7.1-2.4 8.4-5.9.2-.4 0-.9-.4-1.2s-.9-.2-1.2.1c-1 .9-2.3 1.4-3.7 1.4-3.1 0-5.7-2.5-5.7-5.7 0-1.9 1.1-3.8 2.9-4.8zm2.8 12.5c.5 0 1 0 1.4-.1-1.2 1.1-2.8 1.7-4.5 1.7-3.9 0-7-3.1-7-7 0-2.5 1.4-4.8 3.5-6-.7 1.1-1 2.4-1 3.8-.1 4.2 3.4 7.6 7.6 7.6z" />
       </svg>
-    </Button>
+    </button>
   );
 };
