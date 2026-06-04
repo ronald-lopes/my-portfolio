@@ -27,6 +27,7 @@ export const Contact = () => {
             buttonVariants({ variant: "ghost", size: "lg" }) + " aspect-square"
           }
           aria-label="Email"
+          target="_self"
           href="mailto:me@ronaldlopes.design"
         >
           <EnvelopeSimpleIcon weight="bold" size={24} className="w-5 h-auto" />
@@ -37,6 +38,8 @@ export const Contact = () => {
             buttonVariants({ variant: "ghost", size: "lg" }) + " aspect-square"
           }
           aria-label="LinkedIn"
+          target="_blank"
+          rel="noopener noreferrer"
           href="https://www.linkedin.com/in/ronald-lopes/"
         >
           <LinkedinLogoIcon weight="bold" size={24} className="w-5 h-auto" />
@@ -47,6 +50,8 @@ export const Contact = () => {
             buttonVariants({ variant: "ghost", size: "lg" }) + " aspect-square"
           }
           aria-label="Dribbble"
+          target="_blank"
+          rel="noopener noreferrer"
           href="https://dribbble.com/ronaldlopes"
         >
           <DribbbleLogoIcon weight="bold" size={24} className="w-5 h-auto" />
@@ -57,6 +62,8 @@ export const Contact = () => {
             buttonVariants({ variant: "ghost", size: "lg" }) + " aspect-square"
           }
           aria-label="GitHub"
+          target="_blank"
+          rel="noopener noreferrer"
           href="https://github.com/ronald-lopes"
         >
           <GithubLogoIcon weight="bold" size={24} className="w-5 h-auto" />
