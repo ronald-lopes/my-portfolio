@@ -75,13 +75,14 @@ export const ContactForm = () => {
                 className="w-full min-w-0"
                 isRequired
               >
-                <Label>Name</Label>
+                <Label htmlFor="name">Name</Label>
                 <Input
                   id="name"
                   name="name"
                   placeholder="Your name"
                   value={inputs.name}
                   onChange={handleOnChange}
+                  autoComplete="on"
                 />
                 <FieldError>Please enter your name</FieldError>
               </TextField>
@@ -92,7 +93,7 @@ export const ContactForm = () => {
                 className="w-full min-w-0"
                 isRequired
               >
-                <Label>Email</Label>
+                <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
                   name="email"
@@ -100,13 +101,14 @@ export const ContactForm = () => {
                   placeholder="Your email"
                   value={inputs.email}
                   onChange={handleOnChange}
+                  autoComplete="on"
                 />
                 <FieldError>Please enter a valid email address</FieldError>
               </TextField>
             </div>
             <div>
               <TextField isRequired variant="secondary" name="message">
-                <Label>Your message</Label>
+                <Label htmlFor="message">Your message</Label>
                 <TextArea
                   id="message"
                   name="message"
@@ -115,6 +117,7 @@ export const ContactForm = () => {
                   rows={3}
                   value={inputs.message}
                   onChange={handleOnChange}
+                  autoComplete="off"
                 ></TextArea>
                 <FieldError>Please enter your message</FieldError>
               </TextField>
@@ -127,7 +130,11 @@ export const ContactForm = () => {
                 size="md"
               >
                 Get in touch
-                <RocketLaunchIcon size={24} weight="fill" />
+                <RocketLaunchIcon
+                  size={24}
+                  weight="fill"
+                  className="hover:animate-rocket"
+                />
               </Button>
             )}
             {submitted && (
