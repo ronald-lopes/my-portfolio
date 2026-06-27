@@ -12,8 +12,14 @@ runs:
       uses: actions/setup-node@v6.4.0
       with:
         node-version: 22
-        cache: pnpm
-        cache-dependency-path: pnpm-lock.yaml
+
+    - name: Cache pnpm store ⚡
+      uses: actions/cache@v4
+      with:
+        path: ~/.pnpm-store
+        key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-
 
     - name: Install dependencies 🔧
       shell: bash
